@@ -13,6 +13,7 @@ All logs are stored in a folder called `Mouse Logs`.
 ### Requirements
 - 15 MB RAM
 - 0.3 MB/s read and write speed
+- 100KB of storage for every 30 minutes of testing
 
 ### Download
 [Click here to download program](https://github.com/EthicallyPython/Mouse-Logger/raw/main/mouse_tracker.exe).
