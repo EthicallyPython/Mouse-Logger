@@ -24,7 +24,7 @@ All logs are stored in a folder called `Mouse Logs`.
 6. Close program.
 
 ## Developers
-To view original source code, please view `mouse_tracker.py`. This program was packaged into an exe using [Auto PY to EXE](https://github.com/brentvollebregt/auto-py-to-exe).
+If you are concerned about security, you can always look at `mouse_tracker.py` for the original source code. This program was packaged into an exe using [Auto PY to EXE](https://github.com/brentvollebregt/auto-py-to-exe).
 
 This project is not yet complete.
 
