@@ -3,6 +3,7 @@ from datetime import datetime
 from time import *
 import csv
 from tkinter import *
+import os
 
 
 class Logger:
@@ -40,7 +41,7 @@ class MouseTracker:
         self.last_mouse_pos = None
 
         # file logging
-        self.file_name = f'./Logs/{self.current_date}_mouse_log.csv'
+        self.file_name = f'./Mouse Logs/{self.current_date}_mouse_log.csv'
         self.Logger = Logger(self.file_name)
 
         # ensures that the logger is not logging unnecessary data
@@ -56,8 +57,8 @@ class MouseTracker:
         height = window.winfo_screenheight()
 
         # write to file
-        with open('./Logs/device_information.txt', 'w') as file:
-            print('Logging screen size')
+        with open('./Mouse Logs/device_information.txt', 'w') as file:
+            print('Logged screen size')
             screen_size = f'Screen size: {width}, {height}'
             file.write(screen_size)
 
@@ -70,7 +71,6 @@ class MouseTracker:
 
     # check if mouse was clicked or held down
     def on_click(self, x, y, button, pressed):
-        # if program is not running, do not log
         if not self.running:
             return
 
@@ -101,11 +101,10 @@ class MouseTracker:
 
     # logs where mouse was moved
     def on_move(self, x, y):
-        # if the program is not running, do not log
         if not self.running:
             return
 
-        # if the current entry is the same as the last entry, do not log
+        # if the current entry is the same as the last entry, do NOT log
         current_time = self.get_time_elapsed()
         if self.last_entry == (round(current_time, 2), x, y):
             return
@@ -139,6 +138,14 @@ class MouseTracker:
             listener.stop()
 
     def create_file(self):
+        folder = 'Mouse Logs'
+        # if folder does not exist, make folder
+        if folder in os.listdir():
+            print(f'{folder} directory already exists!')
+        else:
+            os.mkdir(f'./{folder}/')
+            print(f'Created {folder}')
+
         # make header row if file path doesn't exist
         with open(self.file_name, 'a', newline='') as file:
             csv.writer(file).writerow(
@@ -181,17 +188,17 @@ class Interface:
 
     def start(self):
         # logs when program starts
-        self.track.get_screen_size()
         self.track.create_file()
+        self.track.get_screen_size()
 
     def start_program(self):
-        print('Starting program')
+        print('Program started')
         self.status.set("Status: ON")
         self.track.main()
         self.track.running = True
 
     def stop_program(self):
-        print('Stopping program')
+        print('Program Stopped')
         self.status.set("Status: OFF")
         self.track.main(False)
         self.track.running = False
