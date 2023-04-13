@@ -21,6 +21,7 @@ All logs are stored in a folder called `Mouse Logs`.
 3. Launch program
 4. Click `Start Tracking` when test begins. **Please do not turn off until the test is over**.
 5. Click `Stop Tracking` when test ends.
+6. Close program.
 
 ## Developers
 To view original source code, please view `mouse_tracker.py`. This program was packaged into an exe using [Auto PY to EXE](https://github.com/brentvollebregt/auto-py-to-exe).
