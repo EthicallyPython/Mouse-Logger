@@ -32,7 +32,7 @@ If you are concerned about security, you can always look at `mouse_tracker.py` f
 If you do not want to downoad `mouse_tracker.exe`:
 1. Download `mouse_tracker.py`
 2. Run Auto PY to EXE
-3. Package `mouse_tracker.py` into an EXE file.
+3. Use Auto PY to EXE to convert `mouse_tracker.py` into an EXE file.
 
 ## Author
 Kevin Duong
