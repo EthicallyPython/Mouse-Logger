@@ -14,6 +14,9 @@ All logs are stored in a folder called `Mouse Logs`.
 - 15 MB RAM
 - 0.3 MB/s read and write speed
 - 100KB of storage for every 30 minutes of testing
+- 1920x1080 screen resolution
+
+Note, this program must be run on a single-monitor setup. Data may get messed up if you are using it on a multi-monitor setup.
 
 ### Download
 1. [Click here to download program](https://github.com/EthicallyPython/Mouse-Logger/raw/main/mouse_tracker.exe).
