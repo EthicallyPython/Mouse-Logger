@@ -5,6 +5,7 @@ Logs mouse movements and stores it in a file.
 This program tracks:
 - the mouse's location once every 0.5 seconds
 - mouse clicks
+- if *any* mouse button was pressed
 - total seconds since program began
 
 All logs are stored in a folder called `Mouse Logs`.
