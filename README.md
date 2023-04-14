@@ -29,5 +29,10 @@ Note, this program must be run on a single-monitor setup. Data may get messed up
 ## Developers
 If you are concerned about security, you can always look at `mouse_tracker.py` for the original source code. This program was packaged into an exe using [Auto PY to EXE](https://github.com/brentvollebregt/auto-py-to-exe).
 
+If you do not want to downoad `mouse_tracker.exe`:
+1. Download `mouse_tracker.py`
+2. Run Auto PY to EXE
+3. Package `mouse_tracker.py` into an EXE file.
+
 ## Author
 Kevin Duong
