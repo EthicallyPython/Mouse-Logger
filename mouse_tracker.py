@@ -31,7 +31,7 @@ class MouseTracker:
     """
     Logs mouse locations. Stores them later using class Logger
     """
-    def __init__(self):
+    def __init__(self, is_cheater):
         self.current_date = datetime.now().strftime('%Y-%m-%dT%H.%M.%S')
         self.start_time = time()
         self.button_pressed = False
@@ -40,15 +40,20 @@ class MouseTracker:
         self.break_loop = False
         self.last_mouse_pos = None
 
-        # file logging
-        self.file_name = f'./Mouse Logs/{self.current_date}_mouse_log.csv'
-        self.Logger = Logger(self.file_name)
-
         # ensures that the logger is not logging unnecessary data
         self.last_time_stamp = 0
         self.last_entry = list(range(5))
         self.running = False  # checks if user wants to run program before logging
         self.time_last_moved = 0  # checks when mouse was last moved
+
+        self.is_cheater = is_cheater
+        # if user is cheating, create file with certain file name attached to it
+        if is_cheater:
+            self.file_name = f'./Mouse Logs/{self.current_date}_mouse_log_cheater.csv'
+        else:
+            self.file_name = f'./Mouse Logs/{self.current_date}_mouse_log_innocent.csv'
+
+        self.Logger = Logger(self.file_name)
 
     @staticmethod
     def get_screen_size():
@@ -146,11 +151,12 @@ class MouseTracker:
             os.mkdir(f'./{folder}/')
             print(f'Created {folder}')
 
-        # make header row if file path doesn't exist
+        # make header row
         with open(self.file_name, 'a', newline='') as file:
             csv.writer(file).writerow(
                 ['Time Since Start of Test', 'Mouse X Position', 'Mouse Y Position', 'Mouse Button Clicked', 'Pressed']
             )
+        print(f'Created {self.file_name}')
 
     def write_to_csv(self, data):
         if data is not None:
@@ -169,7 +175,7 @@ class Interface:
     """
     def __init__(self, master):
         self.master = master
-        self.track = MouseTracker()
+        self.track = MouseTracker(is_cheater=True)  # instance of MouseTracker()
 
         title = Label(text='Welcome to Mouse Logger', font=('Arial', 25))
         title.pack(pady=20, padx=20)
@@ -183,28 +189,63 @@ class Interface:
         Label(master, textvariable=self.status, font="Arial, 15").pack(pady=5)
 
         # Create buttons to start the infinite loop
-        Button(master, text="Start Tracking", font="Arial, 20", command=self.start_program).pack(padx=20, pady=5)
-        Button(master, text="Stop Tracking", font="Arial, 20", command=self.stop_program).pack(padx=20, pady=5)
+        Button(master, text="Start Tracking", font="Arial, 20", command=lambda: self.start_program(True)).pack(padx=20,
+                                                                                                               pady=5)
+        Button(master, text="Stop Tracking", font="Arial, 20", command=lambda: self.start_program(False)).pack(padx=20,
+                                                                                                               pady=5)
 
-    def start(self):
+        # Tells user if they are cheating or not
+        Label(master, text="Cheating Configurations", font="Arial, 20").pack()
+
+        self.is_cheater = True
+        self.cheating = StringVar()
+        self.cheating.set('You are now CHEATING')
+        Label(master, textvariable=self.cheating, font="Arial, 15").pack(pady=5)
+        Button(master, text="Be a Cheater", font="Arial, 15", command=lambda: self.cheater(True, self.track.running)).pack(padx=20, pady=5)
+        Button(master, text="Be Innocent", font="Arial, 15", command=lambda: self.cheater(False, self.track.running)).pack(padx=20, pady=5)
+
+    def cheater(self, cheater, is_program_running):
+        if is_program_running:
+            # todo: alert user that they aren't allowed to switch cheating configs after they start
+            print("ERROR: Cannot switch while program is running!")
+            return
+
+        if cheater:
+            print('Switched to Cheater')
+            self.cheating.set("You are now CHEATING")
+            self.is_cheater = True
+        else:
+            print('Switched to Innocent')
+            self.cheating.set("You are now INNOCENT")
+            self.is_cheater = False
+
+    @staticmethod
+    def start_interface():
         # logs when program starts
-        self.track.create_file()
-        self.track.get_screen_size()
+        MouseTracker.get_screen_size()
 
-    def start_program(self):
-        print('Program started')
-        self.status.set("Status: ON")
-        self.track.main()
-        self.track.running = True
+    def start_program(self, start=True):
+        if start:
+            # if program is already running, ignore user input
+            if self.track.running:
+                print('Program is already running!')
+                return
 
-    def stop_program(self):
-        print('Program Stopped')
-        self.status.set("Status: OFF")
-        self.track.main(False)
-        self.track.running = False
+            # start new instance of MouseTracker() every time
+            self.track = MouseTracker(self.is_cheater)
+            print('Program started')
+            self.status.set("Status: ON")
+            self.track.create_file()
+            self.track.main()
+            self.track.running = True
+        else:
+            print('Program Stopped')
+            self.status.set("Status: OFF")
+            self.track.main(False)
+            self.track.running = False
 
-        # log remaining data
-        self.track.write_to_csv(self.track.saved_mouse_pos)
+            # log remaining data
+            self.track.write_to_csv(self.track.saved_mouse_pos)
 
     # creates main window
     @staticmethod
@@ -227,6 +268,6 @@ if __name__ == '__main__':
     root.resizable(height=None, width=None)  # prevents window from being resized
     app = Interface(root)
 
-    app.start()
+    app.start_interface()
 
     root.mainloop()
