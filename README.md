@@ -22,7 +22,7 @@ Note, this program must be run on a single-monitor setup. Data may get messed up
 ### Download
 1. [Click here to download program](https://github.com/EthicallyPython/Mouse-Logger/raw/main/mouse_tracker.exe).
 2. Disable antivirus warnings (if needed).
-3. When the test begins, launch the program and click `Start Tracking`. **Please do not click `Stop Tracking` or close the program until the test is over**.
+3. When the test begins, launch the program and click `Start Tracking`. **Please do not click `Stop Tracking` and do not close the program until the test is over**.
 5. When the test ends, click `Stop Tracking`
 6. Close program.
 
