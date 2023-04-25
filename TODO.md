@@ -33,5 +33,6 @@ Place completed actions here.
 This section lists possible actions that could be completed in the future. You are not required to complete these.
 - [ ] Display logo for mouse logger (see `Images` folder)
     - Currently, it is a Photoshop file. To edit this file, use Photoshop, GIMP, or https://www.photopea.com/.
+- [ ] Turn `data_processing.ipynb` into a class
 
 ### Completed Optional Actions
