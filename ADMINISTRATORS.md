@@ -18,6 +18,6 @@ Please tell your test takers to:
 After, the administrator must:
 1. Download all submitted data.
 2. Combine all data into one folder. If any files conflict, keep both. See [this video](https://www.youtube.com/watch?v=qiyFR4i2puA) if you are unsure.
-3. Send the combined folder to 92.89 [at] pcsb [dot] org
+3. Send the combined folder to `developer [at] email [dot] com`.
 
 All logs should be separated by test format. For example, assume you have tests named `Test A`, `Test B`, and `Test C`. It is best to create folders for each test. `Test A`'s logs should go in the `Test A` folder. The same goes for `Test B` and `Test C`.
