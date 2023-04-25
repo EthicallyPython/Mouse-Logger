@@ -7,7 +7,7 @@ Please tell your test takers to:
 1. Download the Mouse Logger program [here](https://github.com/EthicallyPython/Mouse-Logger#download).
 2. Follow the instructions in the above link.
 3. Do the test two times.
-    - **Important**: before starting each test, make sure that the Cheating Configurations are set correctly. See image below for reference.
+    - **Important**: before starting each test, make sure that the Cheating Configurations are set correctly.
     - 1st time: **no** cheating.
     - 2nd time: cheat using any method. Some examples include:
         -  looking up the answer on the computer
