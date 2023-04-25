@@ -8,7 +8,8 @@ This section lists required actions that will help move this project forward.
     - Files in `training` will be used to train the model. Files in `test` are used to test the model's performance.
 - [ ] Find a standardized test for students to cheat on
     - Some example tests include:
-        - [Systems of equations with elimination challenge](https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations/x2f8bb11595b61c86:solving-systems-elimination/e/systems_of_equations_with_elimination)
+        - [Khan Academy - Systems of equations with elimination challenge](https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations/x2f8bb11595b61c86:solving-systems-elimination/e/systems_of_equations_with_elimination)
+        - [4Tests - Algebra Exam](https://www.4tests.com/algebra)
     - Alternatively, use an online test assigned by the teacher.
 - [ ] Implement various different model types and compare performance between all of them. Head to [this website](https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html) for more information.
     - [x] Logistic Regresssion
@@ -23,7 +24,14 @@ This section lists required actions that will help move this project forward.
     - Note, calculating curvature may not work for multiple straight lines. Therefore, it may make sense **not** to implement curvature. However, 
 - [ ] Get mouse logging data in all other core subjects (history, English, math, and science)
     - Personally, I recommend to start with math. This is because math requires students to work using pen and paper, and not on the computer.
-
+- [ ] Turn machine learning into a function
+    - arguments:
+        - `model`: model type
+        - `X_train`
+        - `X_test`
+        - `y_train`
+        - `y_test`
+    - prints `classification_report`, `ConfusionMatrixDisplay`, and a bar chart of its performance
 
 
 ### Completed Next Actions
