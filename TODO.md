@@ -34,5 +34,7 @@ This section lists possible actions that could be completed in the future. You a
 - [ ] Display logo for mouse logger (see `Images` folder)
     - Currently, it is a Photoshop file. To edit this file, use Photoshop, GIMP, or https://www.photopea.com/.
 - [ ] Turn `data_processing.ipynb` into a class
+- [ ] Test how performance differs with different screen resolutions
+    - [ ] Make program that can scale different screen resolutions such that they are the same size
 
 ### Completed Optional Actions
