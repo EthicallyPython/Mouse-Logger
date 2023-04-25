@@ -5,6 +5,7 @@ This document lists items that must be done. This is targeted towards developers
 This section lists required actions that will help move this project forward.
 - [ ] `data_processing.ipynb`: move 2/3 of files to `training` and 1/3 of files to `test`
     - Files must be separated because each file represents one student
+    - Files in `training` will be used on model. Files in `test` are used to test the model.
 - [ ] Create test for students to cheat on
     - Some example tests include:
         - [Systems of equations with elimination challenge](https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations/x2f8bb11595b61c86:solving-systems-elimination/e/systems_of_equations_with_elimination)
